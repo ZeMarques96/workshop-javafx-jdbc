@@ -9,4 +9,8 @@ module javaf.workshopjavafxjdbc {
     exports javaf.workshop.gui;
     opens javaf.workshop.gui.util to javafx.fxml;
     exports javaf.workshop.gui.util;
+    opens javaf.workshop.model.entities to javafx.fxml;
+    exports javaf.workshop.model.entities;
+    opens javaf.workshop.model.service to javafx.fxml;
+    exports javaf.workshop.model.service;
 }
