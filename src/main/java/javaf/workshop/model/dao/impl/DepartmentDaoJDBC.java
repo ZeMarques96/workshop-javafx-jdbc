@@ -2,6 +2,7 @@ package javaf.workshop.model.dao.impl;
 
 import javaf.workshop.db.DB;
 import javaf.workshop.db.DbException;
+import javaf.workshop.db.DbIntegrityExecption;
 import javaf.workshop.model.dao.DepartmentDao;
 import javaf.workshop.model.entities.Department;
 
@@ -93,6 +94,9 @@ public class DepartmentDaoJDBC implements DepartmentDao {
             }
         }
         catch (SQLException e ){
+            throw  new DbIntegrityExecption(e.getMessage());
+        }
+        finally {
             DB.closeStatement(st);
         }
     }
