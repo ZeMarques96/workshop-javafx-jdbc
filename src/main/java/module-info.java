@@ -3,6 +3,8 @@ module javaf.workshopjavafxjdbc {
     requires javafx.fxml;
 
 
-    opens javaf.workshopjavafxjdbc to javafx.fxml;
-    exports javaf.workshopjavafxjdbc;
+    opens javaf.workshop to javafx.fxml;
+    exports javaf.workshop;
+    opens javaf.workshop.gui to javafx.fxml;
+    exports javaf.workshop.gui;
 }

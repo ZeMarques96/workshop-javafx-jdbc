@@ -1,4 +1,4 @@
-package javaf.workshopjavafxjdbc;
+package javaf.workshop;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +13,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MainView.fxml"));
+
             ScrollPane scrollPane = loader.load();
 
             scrollPane.setFitToHeight(true);
