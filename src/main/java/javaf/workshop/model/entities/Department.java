@@ -1,14 +1,16 @@
 package javaf.workshop.model.entities;
+
 import java.io.Serializable;
 
-public class Department implements Serializable {
+public class Department implements Serializable, Comparable<Department> {
 
     private static final long serialVersionUID = 1L;
 
     private Integer id;
     private String name;
 
-    public Department() {
+    public Department(){
+
     }
 
     public Department(Integer id, String name) {
@@ -59,6 +61,14 @@ public class Department implements Serializable {
 
     @Override
     public String toString() {
-        return "Department [id=" + id + ", name=" + name + "]";
+        return "ID: " + id + ", DepartmentName: " + name;
     }
+
+    @Override
+    public int compareTo(Department o) {
+        return id.compareTo(o.getId());
+    }
+
+
+
 }

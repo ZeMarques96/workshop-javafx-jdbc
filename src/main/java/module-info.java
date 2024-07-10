@@ -1,6 +1,7 @@
 module javaf.workshopjavafxjdbc {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens javaf.workshop to javafx.fxml;
