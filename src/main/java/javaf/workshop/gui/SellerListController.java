@@ -5,10 +5,12 @@ import javaf.workshop.db.DbIntegrityExecption;
 import javaf.workshop.gui.listeners.DataChangerListener;
 import javaf.workshop.gui.util.Alerts;
 import javaf.workshop.gui.util.Utils;
+import javaf.workshop.model.entities.Department;
 import javaf.workshop.model.entities.Seller;
 import javaf.workshop.model.service.DepartmentService;
 import javaf.workshop.model.service.SellerService;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,6 +53,9 @@ public class SellerListController implements Initializable, DataChangerListener 
     @FXML
     private TableColumn<Seller, Double> tableColumnBaseSalary;
 
+    @FXML
+    private TableColumn<Seller, String> tableColumnDepartment;
+
 
 
     @FXML
@@ -88,7 +93,10 @@ public class SellerListController implements Initializable, DataChangerListener 
         Utils.formatTableColumnDate(tableColumnBirthDate, "dd/MM/yyyy");
         tableColumnBaseSalary.setCellValueFactory(new PropertyValueFactory<>("baseSalary"));
         Utils.formatTableColumnDouble(tableColumnBaseSalary, 2);
-
+        tableColumnDepartment.setCellValueFactory( cellData -> {
+            Department department = cellData.getValue().getDepartment();
+            return new SimpleStringProperty(department != null ? department.getName(): "");
+        });
         Stage stage = (Stage) Main.getMainScene().getWindow();
         tableViewSeller.prefHeightProperty().bind(stage.heightProperty());
     }
