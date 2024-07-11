@@ -6,6 +6,7 @@ import javaf.workshop.gui.listeners.DataChangerListener;
 import javaf.workshop.gui.util.Alerts;
 import javaf.workshop.gui.util.Utils;
 import javaf.workshop.model.entities.Seller;
+import javaf.workshop.model.service.DepartmentService;
 import javaf.workshop.model.service.SellerService;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -110,7 +111,8 @@ public class SellerListController implements Initializable, DataChangerListener 
 
             SellerFormController controller = loader.getController();
             controller.setSeller(obj);
-            controller.setSellerService(new SellerService());
+            controller.setSellerServices(new SellerService(), new DepartmentService());
+            controller.loadAssociatedObjects();
             controller.subscribeDataChangeListener(this);
             controller.updateFormData();
 
@@ -122,6 +124,7 @@ public class SellerListController implements Initializable, DataChangerListener 
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.showAndWait();
         } catch (IOException e) {
+            e.printStackTrace();
             Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
